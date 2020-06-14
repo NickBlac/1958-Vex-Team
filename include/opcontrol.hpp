@@ -10,6 +10,10 @@ void driveOP();
 void pivotOP();
 void intakeOP();
 void liftOP();
-
-
+void flipperOP();
+void flywheelOP();
+void xdriveOP();
+void drive2OP();
+void outtakeOP();
+void rainbowOP();
 #endif

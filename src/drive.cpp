@@ -10,8 +10,8 @@ void drive(int leftVelocity, int rightVelocity) {
         rightVelocity = 0;
 
 
-    front_left.move_velocity(leftVelocity);
+//    front_left.move_velocity(leftVelocity);
     back_left.move_velocity(leftVelocity);
-    front_right.move_velocity(rightVelocity);
+//    front_right.move_velocity(rightVelocity);
     back_right.move_velocity(rightVelocity);
 }

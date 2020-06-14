@@ -9,26 +9,29 @@
 //lv_obj_align(debug_label,NULL,LV_ALIGN_IN_TOP_RIGHT,0,0);
 //lv_obj_align(debug_label, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 0);
 
+enum Direction {forward, reverse, stopped};
+enum Direction intakeDirection = stopped;
+int click_time = 0;
 
-void driveOP() {
+void driveOP() {/*
     int leftPower = (int) (con.get_analog(ANALOG_LEFT_Y) * 170.0/127);
     int rightPower = (int) (con.get_analog(ANALOG_RIGHT_Y)* 170.0/127);
 
-    /*
-    if(leftPower > 0){
-      leftPower = pow(GROWTH,leftPower - SHIFT) - 1;
-    }
-    else if(leftPower < 0) {
-      leftPower = -pow(GROWTH,abs(leftPower) - SHIFT) - 1;
-    }
+    
+    //if(leftPower > 0){
+    //  leftPower = pow(GROWTH,leftPower - SHIFT) - 1;
+    //}
+    //else if(leftPower < 0) {
+    //  leftPower = -pow(GROWTH,abs(leftPower) - SHIFT) - 1;
+    //}
 
-    if(rightPower > 0) {
-      rightPower = pow(GROWTH,rightPower - SHIFT) - 1;
-    }
-    if(rightPower < 0) {
-      rightPower = -pow(GROWTH,abs(rightPower) - SHIFT) - 1;
-    }
-    */
+    //if(rightPower > 0) {
+    //  rightPower = pow(GROWTH,rightPower - SHIFT) - 1;
+    //}
+    //if(rightPower < 0) {
+    //  rightPower = -pow(GROWTH,abs(rightPower) - SHIFT) - 1;
+    //}
+    
 
 
     if(abs(rightPower) < 30) {
@@ -57,14 +60,58 @@ void driveOP() {
     back_left.move_velocity(leftPower);
     front_right.move_velocity(rightPower);
     back_right.move_velocity(rightPower);
+*/}
+
+void drive2OP() {
+    int leftPower = (int) (con.get_analog(ANALOG_LEFT_Y) * 170.0/127);
+    int rightPower = (int) (con.get_analog(ANALOG_RIGHT_Y)* 170.0/127);
+
+    
+    //if(leftPower > 0){
+    //  leftPower = pow(GROWTH,leftPower - SHIFT) - 1;
+    //}
+    //else if(leftPower < 0) {
+    //  leftPower = -pow(GROWTH,abs(leftPower) - SHIFT) - 1;
+    //}
+
+    //if(rightPower > 0) {
+    //  rightPower = pow(GROWTH,rightPower - SHIFT) - 1;
+    //}
+    //if(rightPower < 0) {
+    //  rightPower = -pow(GROWTH,abs(rightPower) - SHIFT) - 1;
+    //}
+    
+
+
+    if(abs(rightPower) < 30) {
+      rightPower = 0;
+    }
+    else if(rightPower > 0) {
+      rightPower -= 30;
+    }
+    else if(rightPower < 0) {
+      rightPower += 30;
+    }
+
+    if(abs(leftPower) < 30) {
+      leftPower = 0;
+    }
+    else if(leftPower > 0){
+      leftPower -= 30;
+    }
+    else if(leftPower < 0){
+      leftPower += 30;
+    }
+
+
+    //drive(leftPower, rightPower);
+    //front_left.move_velocity(leftPower);
+    back_left.move_velocity(leftPower);
+    //front_right.move_velocity(rightPower);
+    back_right.move_velocity(rightPower);
 }
 
-
-enum Direction {forward, reverse, stopped};
-enum Direction intakeDirection = stopped;
-int click_time = 0;
-
-void intakeOP() {
+void intakeOP() {/*
   //std::to_string(click_time).c_str()
   //lv_label_set_text(debug_label, std::to_string(pros::millis() - click_time).c_str());
 
@@ -88,19 +135,19 @@ void intakeOP() {
   }
 
 
-  /*
-  if(con.get_digital(DIGITAL_R1)){
-    if(intakeDirection != reverse && pros::millis() - click_time > 300) {
-      intakeDirection = reverse;
-    }
-    else if(intakeDirection == reverse && pros::millis() - click_time > 300){
-      intakeDirection = stopped;
-    }
-    if(pros::millis() - click_time > 300) {
-      click_time = pros::millis();
-    }
-  }
-  */
+  
+  //if(con.get_digital(DIGITAL_R1)){
+  //  if(intakeDirection != reverse && pros::millis() - click_time > 300) {
+  //    intakeDirection = reverse;
+  //  }
+  //  else if(intakeDirection == reverse && pros::millis() - click_time > 300){
+  //    intakeDirection = stopped;
+  //  }
+  //  if(pros::millis() - click_time > 300) {
+  //    click_time = pros::millis();
+  //  }
+  //}
+  
 
   int intakePower = 0;
   switch(intakeDirection) {
@@ -118,10 +165,9 @@ void intakeOP() {
   intake_left.move_velocity(intakePower);
   intake_right.move_velocity(intakePower);
 
-}
+*/}
 
-
-void pivotOP() {
+void pivotOP() {/*
   if(con.get_digital(DIGITAL_R2) && con.get_digital(DIGITAL_L2)) {
       pivot.move_velocity(0);
       pivot.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -134,10 +180,9 @@ void pivotOP() {
       pivot.move_velocity(0);
       pivot.set_brake_mode(MOTOR_BRAKE_HOLD);
   }
-}
+*/}
 
-
-void liftOP() {
+void liftOP() {/*
   if(con.get_digital(DIGITAL_X) && con.get_digital(DIGITAL_Y)) {
       lift.move_velocity(0);
       lift.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -150,23 +195,21 @@ void liftOP() {
       lift.move_velocity(0);
       lift.set_brake_mode(MOTOR_BRAKE_HOLD);
   }
-}
+*/}
 
-void xdriveOP(){
+void xdriveOP(){/*
 
-	int mthrottle = con.get_analog(ANALOG_RIGHT_Y)
-	int mstrafe = -1 * con.get_analog(ANALOG_RIGHT_X)
-	int mturn = -1 * con.get_analog(ANALOG_LEFT_X)
+	int mthrottle = con.get_analog(ANALOG_RIGHT_Y);
+	int mstrafe = -1 * con.get_analog(ANALOG_RIGHT_X);
+	int mturn = -1 * con.get_analog(ANALOG_LEFT_X);
 		
  
 	front_right.move_voltage(-120 * (mthrottle + mstrafe + mturn));
 	back_right.move_voltage(-120 * (mthrottle - mstrafe + mturn));
-	front_left.move_voltage(120 * (mthrottle - mstrafe - mtrun));
+	front_left.move_voltage(120 * (mthrottle - mstrafe - mturn));
 	back_left.move_voltage(120 * (mthrottle + mstrafe - mturn));
 
-}
-
-
+*/}
 
 /*
 bool previous_intake_status = false, previous_flywheel_status = false;
@@ -197,54 +240,13 @@ bool isNewButtonPress (pros::controller_digital_e_t button) {
 
 */
 
+//okapi::ControllerButton intakeForward(okapi::ControllerDigital::R1, false);
+//okapi::ControllerButton intakeReverse(okapi::ControllerDigital::L1, false);
+void outtakeOP() {
 
-/*
-okapi::ControllerButton intakeForward(okapi::ControllerDigital::R1, false);
-okapi::ControllerButton intakeReverse(okapi::ControllerDigital::L1, false);
-void intakeOP() {
-
-  lv_label_set_text(debug_label, std::to_string(intakeDirection).c_str());
-
-  if(intakeForward.changedToPressed()){
-    if(intakeDirection != forward) {
-      intakeDirection = forward;
-    }
-    else {
-      intakeDirection = stopped;
-    }
-  }
-  if(intakeReverse.changedToPressed()){
-    if(intakeDirection != reverse) {
-
-      intakeDirection = reverse;
-    }
-    else {
-      intakeDirection = stopped;
-    }
-  }
-
-
-  int intakePower = 0;
-  switch(intakeDirection) {
-    case forward:
-      intakePower = 200;
-      break;
-    case reverse:
-      intakePower = -200;
-      break;
-    case stopped:
-      intakePower = 0;
-      break;
-  }
-
-
-  intake_left.move_velocity(intakePower);
-  intake_right.move_velocity(intakePower);
 }
-*/
 
-/*
-void flipperOP() {
+void flipperOP() {/*
 
 
     if(con.get_digital(DIGITAL_L1)) {
@@ -263,12 +265,9 @@ void flipperOP() {
         flipper.set_brake_mode(MOTOR_BRAKE_HOLD);
     }
 
-}
+*/}
 
-*/
-
-/*
-void flywheelOP() {
+void flywheelOP() {/*
     con.clear();
 
     if(isNewButtonPress(DIGITAL_B)){
@@ -284,4 +283,8 @@ void flywheelOP() {
     else
         con.print(1,1,"false");
 
-}*/
+*/}
+
+void rainbowOP(){
+
+};

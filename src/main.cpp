@@ -75,20 +75,20 @@ void autonomous() {
 			break;
 
 		case 1:
-			front_red_1();
+			//front_red_1();
 			break;
 
 		case 2:
-			front_blue_1();
+			//front_blue_1();
 			break;
 
 		case 3:
-			back_red_1();
+			//back_red_1();
 			break;
 
 
 		case 4:
-			back_blue_1();
+			//back_blue_1();
 			break;
 
 		case 5:
@@ -104,7 +104,7 @@ void autonomous() {
 
 			break;
 		case 9:
-			skills();
+			//skills();
 			break;
 	}
 
@@ -125,9 +125,9 @@ void autonomous() {
  */
 void opcontrol() {
 
-	front_left.set_brake_mode(MOTOR_BRAKE_COAST);
+	//front_left.set_brake_mode(MOTOR_BRAKE_COAST);
 	back_left.set_brake_mode(MOTOR_BRAKE_COAST);
-	front_right.set_brake_mode(MOTOR_BRAKE_COAST);
+	//front_right.set_brake_mode(MOTOR_BRAKE_COAST);
 	back_right.set_brake_mode(MOTOR_BRAKE_COAST);
 
 	while (true) {
@@ -138,8 +138,13 @@ void opcontrol() {
 						 */
 		pivotOP();
 		intakeOP();
+		outtakeOP();
 		driveOP();
+		drive2OP();
+		xdriveOP();
 		liftOP();
+		flipperOP();
+		rainbowOP();
 		pros::delay(20);
 	}
 }
