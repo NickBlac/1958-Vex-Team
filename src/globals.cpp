@@ -13,8 +13,8 @@ Motor intake_left (13,false);
 //Motor front_right (9,true);
 //Motor front_left (1,false);
 
-Motor back_right (11,true);
-Motor back_left (12,false);
+Motor back_right (1,true);
+Motor back_left (2,false);
 
 Motor rainbow1 (14,false);
 Motor rainbow2 (15,false);

@@ -1,4 +1,5 @@
-/*#include "main.h"
+/*
+#include "main.h"
 #include "pros/motors.h"
 
 // Inches
@@ -6,7 +7,7 @@
 
 int averageMotorPosition(void) {
     return (int) (front_left.get_position() + back_left.get_position()
-            + front_right.get_position() + back_right.get_position()) / 4.0;
+            + front_right.get_position() + back_right.get_position()) / 2.0;
 
 }
 
@@ -114,8 +115,7 @@ void turnRobot(int degrees) {
 
         // P
         error = abs(degrees 
-        - abs(front_left.get_position() + back_left.get_position() 
-        - front_right.get_position() - back_right.get_position() )/ 4) ;
+        - abs(front_left.get_position() + back_left.get_position() - front_right.get_position() - back_right.get_position() )/ 2) ;
         
         // I
         if(error <= 0 || error > 200) {
@@ -155,7 +155,6 @@ void turnRobot(int degrees) {
 
     powerMotorsStraight(0);
 }
-
 
 
 void liftPID(int distance) {
@@ -218,9 +217,4 @@ void liftPID(int distance) {
     pivot.move_velocity(0);
 }
 
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
 */
-
