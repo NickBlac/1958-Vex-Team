@@ -48,7 +48,7 @@
 /**
  * You should add more #includes here
  */
-
+#include "okapi/api.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
@@ -58,9 +58,9 @@
  * concurrently! The okapi namespace will export all symbols inside the pros
  * namespace.
  */
-//using namespace pros;
+using namespace pros;
 //using namespace pros::literals;
-//using namespace okapi;
+using namespace okapi;
 
 /**
  * Prototypes for the competition control tasks are redefined here to ensure

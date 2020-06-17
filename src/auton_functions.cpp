@@ -12,10 +12,10 @@ const int Aback_left = 2;
 const auto WHEEL_DIAMETER = 4_in;
 const auto CHASSIS_WIDTH = 13.25_in;
 
-auto chassis = ChassisControllerFactory::create(
+/*auto chassis = ChassisControllerFactory::create(
     {-1, -13}, {9, 8},
     AbstractMotor::gearset::green,
     {WHEEL_DIAMETER, CHASSIS_WIDTH}
     );
-
+*/
 
